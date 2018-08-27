@@ -1,0 +1,34 @@
+<div class="home-page">
+<h1>MMI Holdings Dev Challenge</h1>
+<button style="margin: 0 auto;" ng-click="$ctrl.getCharacters()">GET CHARACHTERS</button>
+<hr/>
+<div style="width: 40%; float: left;border-style: groove;border-color: black;border-width: 3px; margin-right: 5px;">
+  <ul>
+    <li ng-repeat="character in $ctrl.characters">
+      <span ng-click="$ctrl.getCharacterInfo(character.id)">{{character.name}}</span>
+    </li>
+  </ul>
+
+</div>
+
+<div style="width: 40%; float: left;border-style: groove;border-color: black;border-width: 3px;" ng-if="$ctrl.characterInfo != null">
+  <h2 style="text-align: center">{{$ctrl.characterInfo.name}}</h2>
+  <div style="text-align: center"><img ng-src="{{$ctrl.characterInfo.path}}" height="100" width="100"/></div>
+  
+  <div style="padding: 20px 20px"> 
+    <h2>Stories</h2>
+      <div ng-repeat="stories in $ctrl.characterInfo.stories">
+        <p>{{stories.name}}</p>
+        <p>{{stories.title}}</p>
+        <p>{{stories.description}}</p>
+      </div>
+    <h2>Comics</h2>
+      <div ng-repeat="comics in $ctrl.characterInfo.comics">
+        <p>{{comics.title}}</p>
+        <p>{{comics.issueNumber}}</p>
+        <p>{{comics.description}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>
